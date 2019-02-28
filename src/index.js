@@ -1,5 +1,6 @@
 import helloWorld from './hello-world';
-import addLogo from './add-logo';
+import Logo from './Logo';
 
 helloWorld();
-addLogo();
+const logo = new Logo();
+logo.render();
