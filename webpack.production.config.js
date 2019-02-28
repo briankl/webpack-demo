@@ -4,13 +4,21 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    hello: './src/hello.js',
+    world: './src/world.js'
+  },
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: '[name].[contenthash].js',
     path: path.join(__dirname, 'dist'),
     publicPath: ''
   },
-  mode: 'production', // https://webpack.js.org/concepts/mode
+  mode: 'production', // https://webpack.js.org/concepts/mode,
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   module: {
     rules: [
       {
@@ -40,11 +48,23 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles.[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin('dist'),
     new HtmlWebpackPlugin({
       title: 'Webpack Demo',
+      meta: { viewport: 'width=device-width, initial-scale=1' }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Hello',
+      chunks: ['hello', 'vendors~hello~world'],
+      filename: 'hello.html',
+      meta: { viewport: 'width=device-width, initial-scale=1' }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'World',
+      chunks: ['world', 'vendors~hello~world'],
+      filename: 'world.html',
       meta: { viewport: 'width=device-width, initial-scale=1' }
     })
   ]
