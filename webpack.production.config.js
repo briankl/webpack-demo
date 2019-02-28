@@ -1,13 +1,14 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[contenthash].js',
     path: path.join(__dirname, 'dist'),
-    publicPath: 'dist/'
+    publicPath: ''
   },
   mode: 'production', // https://webpack.js.org/concepts/mode
   module: {
@@ -41,6 +42,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css'
     }),
-    new CleanWebpackPlugin('dist')
+    new CleanWebpackPlugin('dist'),
+    new HtmlWebpackPlugin({
+      title: 'Webpack Demo',
+      meta: { viewport: 'width=device-width, initial-scale=1' }
+    })
   ]
 };
