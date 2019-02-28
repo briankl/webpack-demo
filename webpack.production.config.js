@@ -16,7 +16,9 @@ module.exports = {
   mode: 'production', // https://webpack.js.org/concepts/mode,
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all', // works if package is > 30 kb,
+      minSize: 10000,
+      automaticNameDelimiter: '_'
     }
   },
   module: {
@@ -57,13 +59,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Hello',
-      chunks: ['hello', 'vendors~hello~world'],
+      chunks: ['hello', 'vendors_hello_world'],
       filename: 'hello.html',
       meta: { viewport: 'width=device-width, initial-scale=1' }
     }),
     new HtmlWebpackPlugin({
       title: 'World',
-      chunks: ['world', 'vendors~hello~world'],
+      chunks: ['world', 'vendors_hello_world'],
       filename: 'world.html',
       meta: { viewport: 'width=device-width, initial-scale=1' }
     })
