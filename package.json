@@ -2,7 +2,8 @@
   "name": "webpack-demo",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --config webpack.production.config.js",
+    "build-dev": "webpack --config webpack.dev.config.js"
   },
   "devDependencies": {
     "css-loader": "^2.1.0",

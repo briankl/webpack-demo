@@ -1,5 +1,4 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist/'
   },
-  mode: 'development', // https://webpack.js.org/concepts/mode
+  mode: 'production', // https://webpack.js.org/concepts/mode
   module: {
     rules: [
       {
@@ -38,7 +37,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJsPlugin(),
     new MiniCssExtractPlugin({
       filename: 'styles.css'
     })
