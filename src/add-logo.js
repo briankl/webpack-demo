@@ -1,5 +1,5 @@
 import logo from './logo.jpg';
-import './logo.css';
+import './logo.less';
 
 function addLogo() {
   const img = document.createElement('img');
