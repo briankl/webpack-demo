@@ -9,7 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist/'
   },
-  mode: 'none',
+  mode: 'development', // https://webpack.js.org/concepts/mode
   module: {
     rules: [
       {
