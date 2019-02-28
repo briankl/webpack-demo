@@ -8,6 +8,11 @@ module.exports = {
     publicPath: 'dist/'
   },
   mode: 'development', // https://webpack.js.org/concepts/mode
+  devServer: {
+    contentBase: __dirname,
+    index: 'index.html',
+    port: 9000
+  },
   module: {
     rules: [
       {
